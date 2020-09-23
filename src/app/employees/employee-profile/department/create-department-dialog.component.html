@@ -1,0 +1,31 @@
+<form class="form-horizontal" autocomplete="off">
+    <abp-modal-header [title]="'Create Department' | localize" (onCloseClick)="bsModalRef.hide()">
+    </abp-modal-header>
+    <div class="modal-body">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="row p-col-12">
+                <div class="p-field p-col-6 ">
+                    <label for="departmentName">Department Name</label>
+                    <input type="text" class="form-control p-inputtext-sm" name="departmentName" id="departmentName"
+                        pInputText />
+                </div>
+                <div class="p-field p-col-6 ">
+                    <label for="gender">Gender</label>
+                    <p-dropdown [options]="genders"></p-dropdown>
+                </div>
+            </div>
+            <div class="row p-col-12">
+                <div class="p-field p-col-6">
+                    <label for="relation">Relation</label>
+                    <input type="text" class="form-control p-inputtext-sm" name="relation" id="relation"
+                        pInputText />
+                </div>
+                <div class="p-field p-col-6">
+                    <label for="dob">Date of birth</label>
+                    <p-calendar inputId="dob"></p-calendar>
+                </div>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

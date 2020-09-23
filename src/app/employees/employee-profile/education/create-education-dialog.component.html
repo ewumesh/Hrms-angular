@@ -1,0 +1,37 @@
+<form class="form-horizontal" autocomplete="off">
+    <abp-modal-header [title]="'Create Education' | localize" (onCloseClick)="bsModalRef.hide()">
+    </abp-modal-header>
+    <div class="modal-body">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="row p-col-12">
+                <div class="p-field p-col-6 ">
+                    <label for="schoolName">School Name</label>
+                    <input type="text" class="form-control p-inputtext-sm" name="schoolName" id="schoolName"
+                        pInputText />
+                </div>
+                <div class="p-field p-col-6 ">
+                    <label for="degree">Degree</label>
+                    <p-dropdown [options]="degrees"></p-dropdown>
+                </div>
+            </div>
+            <div class="row p-col-12">
+                <div class="p-field p-col-6">
+                    <label for="fieldOfStudy">Field(s) of study</label>
+                    <input type="text" class="form-control p-inputtext-sm" name="fieldOfStudy" id="fieldOfStudy"
+                        pInputText />
+                </div>
+                <div class="p-field p-col-6">
+                    <label for="yearOfCompletion">Year of Completion</label>
+                    <p-calendar inputId="yearOfCompletion"></p-calendar>
+                </div>
+            </div>
+            <div class="row p-col-12">
+                <div class="p-field p-col-12">
+                    <label for="intrest">Intrest</label>
+                    <input type="text" class="form-control p-inputtext-sm" name="intrest" id="intrest" pInputText />
+                </div>
+            </div>
+        </div>
+    </div>
+    <abp-modal-footer (onCancelClick)="bsModalRef.hide()"></abp-modal-footer>
+</form>

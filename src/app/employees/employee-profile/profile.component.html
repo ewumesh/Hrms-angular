@@ -1,0 +1,514 @@
+<div class="p-d-flex bg-blue">
+    <div class="p-mr-2">
+        <div class="row">
+            <div class="col-md-6 p-md-4">
+                <img style="height: 150px;" class="rounded-circle" src="../../../assets/img/user.png">
+            </div>
+        </div>
+    </div>
+    <div class="p-mr-2">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 style="padding-top: 60px !important;">Umesh Thapa</h4>
+                <p class="pl-1">Software Developer</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<p-tabView>
+    <p-tabPanel header="General Info">
+        <p-panel class="p-md-4" header="Basic Info" *ngIf="basicInfo">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editBasicInfo()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <div class="p-grid">
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>First Name :</b> Umesh
+                        </div>
+                        <div class="col-md-12">
+                            <b>Employee Id :</b> 2157
+                        </div>
+                    </div>
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>Last Name :</b> Thapa
+                        </div>
+                        <div class="col-md-12">
+                            <b>Email :</b> umeshthapa539@gmail.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+        <p-panel class="p-md-4" header="Edit Basic Info" *ngIf="!basicInfo">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editBasicInfo()">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <form class="form-horizontal" autocomplete="off">
+                    <div class="p-grid">
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="firstName" class="p-col-fixed" style="width:150px">First Name : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="firstName" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="employeeId" class="p-col-fixed" style="width:150px">Employee Id : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="employeeId" type="text" pInputText>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="lastName" class="p-col-fixed" style="width:150px">Last Name : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="lastName" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="email" class="p-col-fixed" style="width:150px">Email : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="email" type="text" pInputText>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="button">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </p-panel>
+
+        <p-panel class="p-md-4" header="Work" *ngIf="work">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editWork()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <div class="p-grid">
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>Department :</b> Software development
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Job Title :</b> Android Developer
+                        </div>
+
+                        <div class="col-md-12 pb-3">
+                            <b>Source of hire :</b> Agent
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Work phone :</b> +977980123458
+                        </div>
+
+                    </div>
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>Reporting To :</b> Manager
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Date of hire :</b> 2020/05/12
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Employee Status :</b> Self Employed
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Employee Type :</b> Full time
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+        <p-panel class="p-md-4" header="Edit Work Details" *ngIf="!work">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editWork()">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <form class="form-horizontal" autocomplete="off">
+                    <div class="p-grid">
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="department" class="p-col-fixed" style="width:150px">Department : </label>
+                                <div class="p-col">
+                                    <!-- <input id="department" type="text" pInputText>  -->
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="departments"></p-dropdown>
+
+                                </div>
+                            </div>
+
+                            <div class="p-field p-grid">
+                                <label for="reportingTo" class="p-col-fixed" style="width:150px">Reporting To : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="reportingTo" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="sourceOfHire" class="p-col-fixed" style="width:150px">Source of hire :
+                                </label>
+                                <div class="p-col">
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="jobTitles"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="workPhone" class="p-col-fixed" style="width:150px">Work Phone : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="workPhone" type="text" pInputText>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="jobTitle" class="p-col-fixed" style="width:150px">Job Title : </label>
+                                <div class="p-col">
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="jobTitles"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="dateOfHire" class="p-col-fixed" style="width:150px">Date of hire : </label>
+                                <div class="p-col">
+                                    <p-calendar [style]="{'width':'90%'}" inputId="dateOfHire"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="employeeStatus" class="p-col-fixed" style="width:150px">Employee Status :
+                                </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="employeeStatus" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="employmentType" class="p-col-fixed" style="width:150px">Employement Type :
+                                </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="employmentType" type="text" pInputText>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="button">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </p-panel>
+
+        <p-panel class="p-md-4" header="Personal Details" *ngIf="personalDetail">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editPersonalDetail()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <div class="p-grid">
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>Address :</b> Kathmandu, Nepal
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>State :</b> Bagmati
+                        </div>
+
+                        <div class="col-md-12 pb-3">
+                            <b>Date of birth :</b> June 8, 2001
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Nationality :</b> Nepali
+                        </div>
+
+                    </div>
+                    <div class="p-col-6">
+                        <div class="col-md-12 pb-3">
+                            <b>Country :</b> Nepal
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Phone :</b> +977981234567
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Gender :</b> Male
+                        </div>
+                        <div class="col-md-12 pb-3">
+                            <b>Marital Status :</b> Married
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-panel>
+        <p-panel class="p-md-4" header="Edit Personal Details" *ngIf="!personalDetail">
+            <ng-template pTemplate="icons">
+                <button class="p-panel-header-icon" (click)="editPersonalDetail()">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </ng-template>
+
+            <div class="p-gird">
+                <form class="form-horizontal" autocomplete="off">
+                    <div class="p-grid">
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="address" class="p-col-fixed" style="width:150px">Address : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="address" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="state" class="p-col-fixed" style="width:150px">State : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="state" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="dateOfBirth" class="p-col-fixed" style="width:150px">Date of birth :
+                                </label>
+                                <div class="p-col">
+                                    <p-calendar [style]="{'width':'90%'}" inputId="dateOfBirth"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="nationality" class="p-col-fixed" style="width:150px">Nationality : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="nationality" type="text" pInputText>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-col-6">
+                            <div class="p-field p-grid">
+                                <label for="country" class="p-col-fixed" style="width:150px">Country : </label>
+                                <div class="p-col">
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="countries"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="phone" class="p-col-fixed" style="width:150px">Phone : </label>
+                                <div class="p-col">
+                                    <input style="width: 90%;" id="phone" type="text" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="gender" class="p-col-fixed" style="width:150px">Gender : </label>
+                                <div class="p-col">
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="gender"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="maritalStatus" class="p-col-fixed" style="width:150px">Marital Status :
+                                </label>
+                                <div class="p-col">
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="maritalStatus"></p-dropdown>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="button">Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </p-panel>
+
+        <p-panel class="p-md-4" header="Work Experience">
+            <ng-template pTemplate="icons">
+                <!-- <button class="p-panel-header-icon">
+                    <i class="fa fa-plus-circle fa-2x"></i>
+                </button> -->
+            </ng-template>
+
+            <p-table [value]="experiences" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="sn">S.N <p-sortIcon field="sn"></p-sortIcon></th>
+                        <th pSortableColumn="previousCompany">Previous Company <p-sortIcon field="previousCompany"></p-sortIcon></th>
+                        <th pSortableColumn="jobTitle">Job Title <p-sortIcon field="jobTitle"></p-sortIcon></th>
+                        <th pSortableColumn="jobDesc">Job Description <p-sortIcon field="jobDesc"></p-sortIcon></th>
+                        <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon></th>
+                        <th pSortableColumn="endDate">End Date <p-sortIcon field="intrest"></p-sortIcon></th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-c>
+                    <tr>
+                        <td>{{c.sn}}</td>
+                        <td>{{c.previousCompany}}</td>
+                        <td>{{c.jobTitle}}</td>
+                        <td>{{c.jobDesc}}</td>
+                        <td>{{c.startDate}}</td>
+                        <td>{{c.endDate}}</td>
+                        <td>
+                            <button (click)="editWorkExperience()" class="btn btn-primary mr-2" type="button"><i
+                                class="fas fa-pencil-alt"></i></button>
+                        <button class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <button (click)="createWorkExperience()" class="btn btn-primary" type="button"><i
+                            class="fa fa-plus"></i>Add Work experience</button>
+                </div>
+            </div>
+        </p-panel>
+
+        <p-panel class="p-md-4" header="Education">
+            <ng-template pTemplate="icons">
+                <!-- <button class="p-panel-header-icon">
+                    <i class="fa fa-plus-circle fa-2x"></i>
+                </button> -->
+            </ng-template>
+
+            <p-table [value]="education" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="sn">S.N <p-sortIcon field="sn"></p-sortIcon></th>
+                        <th pSortableColumn="schoolName">School Name <p-sortIcon field="schoolName"></p-sortIcon></th>
+                        <th pSortableColumn="degree">Degree <p-sortIcon field="degree"></p-sortIcon></th>
+                        <th pSortableColumn="field">Field <p-sortIcon field="field"></p-sortIcon></th>
+                        <th pSortableColumn="year">Year <p-sortIcon field="year"></p-sortIcon></th>
+                        <th pSortableColumn="intrest">Intrest <p-sortIcon field="intrest"></p-sortIcon></th>
+                        <th>Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-c>
+                    <tr>
+                        <td>{{c.sn}}</td>
+                        <td>{{c.schoolName}}</td>
+                        <td>{{c.degree}}</td>
+                        <td>{{c.field}}</td>
+                        <td>{{c.year}}</td>
+                        <td>{{c.intrest}}</td>
+                        <td>
+                            <button (click)="editEducation()" class="btn btn-primary mr-2" type="button"><i
+                                class="fas fa-pencil-alt"></i></button>
+                        <button class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <button (click)="createEducation()" class="btn btn-primary" type="button"><i
+                            class="fa fa-plus"></i>Add
+                        Education</button>
+                </div>
+            </div>
+        </p-panel>
+
+        <p-panel class="p-md-4" header="Dependents">
+            <ng-template pTemplate="icons">
+                <!-- <button class="p-panel-header-icon">
+                    <i class="fa fa-plus-circle fa-2x"></i>
+                </button> -->
+            </ng-template>
+
+            <p-table [value]="dependents" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[5,10,15,20]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="sn">S.N <p-sortIcon field="sn"></p-sortIcon></th>
+                        <th pSortableColumn="dependentName">Dependent Name <p-sortIcon field="dependentName"></p-sortIcon></th>
+                        <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
+                        <th pSortableColumn="relationship">Relationship <p-sortIcon field="relationship"></p-sortIcon></th>
+                        <th pSortableColumn="dob">Date of Birth <p-sortIcon field="dob"></p-sortIcon></th>
+                        <th pSortableColumn="sn">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-c>
+                    <tr>
+                        <td>{{c.sn}}</td>
+                        <td>{{c.dependentName}}</td>
+                        <td>{{c.gender}}</td>
+                        <td>{{c.relationship}}</td>
+                        <td>{{c.dob}}</td>
+                        <td>
+                            <button (click)="editDepartment()" class="btn btn-primary mr-2" type="button"><i
+                                class="fas fa-pencil-alt"></i></button>
+                        <button class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <button (click)="createDepartment()" class="btn btn-primary" type="button"><i
+                            class="fa fa-plus"></i>Add department</button>
+                </div>
+            </div>
+        </p-panel>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-default ml-3">Cancel</button>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Job">
+        work in process...
+    </p-tabPanel>
+    <p-tabPanel header="Leave">
+        work in process...
+    </p-tabPanel>
+    <p-tabPanel header="Notes">
+        work in process...
+    </p-tabPanel>
+    <p-tabPanel header="Performance">
+        work in process...
+    </p-tabPanel>
+    <p-tabPanel header="Permissions">
+        work in process...
+    </p-tabPanel>
+</p-tabView>
