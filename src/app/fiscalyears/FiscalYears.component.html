@@ -1,15 +1,55 @@
+<!-- <p-table #dt [value]="FiscalYears" dataKey="FiscalYears.id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [filterDelay]="0" [globalFilterFields]="['FiscalYears.name']">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                List of FiscalYears
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <th>
+                    <input pInputText type="text" (input)="dt.filter($event.target.value, 'FiscalYears.name', 'startsWith')" placeholder="Search by Name" class="p-column-filter">
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-FiscalYears>
+            <tr>
+              <td> {{FiscalYears.name}} </td>
+              <td> {{FiscalYears.code }}</td>
+              <td>{{ FiscalYears.description }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table> -->
+
+
 <div [@routerTransition]>
   <section class="content-header">
     <div class="container-fluid">
       <div class="row">
         <div class="col-6">
-          <h1>{{ "Employee" | localize }}</h1>
+          <h1>{{ "FiscalYear" | localize }}</h1>
         </div>
         <div class="col-6 text-right">
-          <!-- <a href="javascript:;" class="btn bg-blue" (click)="createEmployee()">
+          <a href="javascript:;" class="btn bg-blue" (click)="createFiscalYear()">
             <i class="fa fa-plus-square"></i>
             {{ "Create" | localize }}
-          </a> -->
+          </a>
         </div>
       </div>
     </div>
@@ -17,7 +57,7 @@
   <section class="content px-2">
     <div class="container-fluid">
       <div class="card">
-        <div class="card-header">
+        <!-- <div class="card-header">
           <div class="input-group">
             <div class="input-group-prepend">
               <button
@@ -50,7 +90,7 @@
               </button>
             </div>
           </div>
-          <!-- <div *ngIf="advancedFiltersVisible" class="card mb-0 mt-1">
+          <div *ngIf="advancedFiltersVisible" class="card mb-0 mt-1">
             <div class="card-body">
               <form class="form-horizontal">
                 <div class="row">
@@ -128,105 +168,85 @@
                 {{ "Clear" | localize }}
               </button>
             </div>
-          </div> -->
-        </div>
+          </div>
+        </div> -->
         <div class="card-body table-responsive p-0">
-          <table class="table table-hover text-nowrap" [busy]="isTableLoading">
-            <thead class="bg-light">
+          <p-table #dt [value]="FiscalYears" dataKey="FiscalYears.id"
+          
+          [filterDelay]="0" [globalFilterFields]="['FiscalYears.name']">
+          <ng-template pTemplate="caption">
+              <div class="table-header">
+                  List of FiscalYears
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                  </span>
+              </div>
+          </ng-template>
+          <ng-template pTemplate="header">
               <tr>
-                <th>{{ "firstName" | localize }}</th>
-                <th>{{ "lastName" | localize }}</th>
-                <th>{{ "gender" | localize }}</th>
-                <th>{{ "dob" | localize }}</th>
-                <th>{{ "maritalStatus" | localize }}</th>
-                <th>{{ "email" | localize }}</th>
-                <th>{{ "phone" | localize }}</th>
-                <th>{{ "permanentAddress" | localize }}</th>
-                <th>{{ "temporaryAddress" | localize }}</th>
-                <th>{{ "employeeIdNumber" | localize }}</th>
-                <th>{{ "designation" | localize }}</th>
-                <th>{{ "departmentId" | localize }}</th>
-                <th>{{ "supervisor" | localize }}</th>
-                <th>{{ "joiningDate" | localize }}</th>
-                <th>{{ "leavingDate" | localize }}</th>
-                <th>{{ "basicSalary" | localize }}</th>
-                <th>{{ "unpaidLeavePD" | localize }}</th>
-                <th>{{ "benefitPackageTemplate" | localize }}</th>
-                <th>{{ "accountHolderName" | localize }}</th>
-                <th>{{ "bankName" | localize }}</th>
-                <th>{{ "accountNumber" | localize }}</th>
-                <th>{{ "swiftCode" | localize }}</th>
-                <th style="width: 200px;">{{ "Actions" | localize }}</th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="startDate">StartDate <p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="endDate">EndDate <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="isCurrent">IsCurrent <p-sortIcon field="isActive"></p-sortIcon></th>
+                  <th style="width: 200px;">{{ "Actions" | localize }}</th>
               </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="
-                  let employees of employees
-                  | paginate
-                  : {
-                      id: 'server',
-                      itemsPerPage: pageSize,
-                      currentPage: pageNumber,
-                      totalItems: totalItems
-                    }
-                  
-                "
-              >
-                <td> {{employees.firstName}} </td>
-                <td> {{employees.lastName }}</td>
-                <td>{{ employees.gender }}</td>
-                <td>{{ employees.dob  | date:"MM/dd/yyyy" }}</td>
-                <td>{{ employees.maritalStatus }}</td>
-                <td>{{ employees.email }}</td>
-                <td>{{ employees.phone }}</td>
-                <td>{{ employees.permanentAddress }}</td>
-                <td>{{ employees.temporaryAddress }}</td>
-                <td>{{ employees.employeeIdNumber }}</td>
-                <td>{{ employees.designation }}</td>
-                <td>{{ employees.departmentId }}</td>
-                <td>{{ employees.supervisor }}</td>
-                <td>{{ employees.joiningDate }}</td>
-                <td>{{ employees.leavingDate }}</td>
-                <td>{{ employees.basicSalary }}</td>
-                <td>{{ employees.unpaidLeavePD }}</td>
-                <td>{{ employees.benefitPackageTemplate }}</td>
-                <td>{{ employees.accountHolderName }}</td>
-                <td>{{ employees.bankName }}</td>
-                <td>{{ employees.accountNumber }}</td>
-                <td>{{ employees.swiftCode }}</td>
-                <!-- <td>
-                  <div class="custom-control custom-checkbox">
-                    <input
-                      type="checkbox"
-                      class="custom-control-input"
-                      disabled
-                      [checked]="tenant.isActive"
-                    />
-                    <label class="custom-control-label"></label>
-                  </div>
-                </td> -->
+              <!-- <tr>
+                  <th>
+                      <input pInputText type="text" (input)="dt.filter($event.target.value, 'FiscalYears.name', 'startsWith')" placeholder="Search by Name" class="p-column-filter">
+                  </th>
+              </tr> -->
+          </ng-template>
+          <ng-template pTemplate="body" let-FiscalYears>
+              <tr>
+                <td> {{FiscalYears.name}} </td>
+                <td> {{FiscalYears.startDate}}</td>
+                <td>{{ FiscalYears.endDate }}</td>
                 <td>
-                  <button
-                    type="button"
-                    class="btn btn-sm bg-secondary"
-                    (click)="editEmployee(employees)"
-                  >
-                    <i class="fas fa-pencil-alt"></i>
-                    {{ "Edit" | localize }}
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-sm bg-danger mx-2"
-                    (click)="delete(employees)"
-                  >
-                    <i class="fas fa-trash"></i>
-                    {{ "Delete" | localize }}
-                  </button>
-                </td>
+                  <p-checkbox [(ngModel)]="FiscalYears.isCurrent"
+            name="isCurrent"
+              id="isCurrent"
+            [binary]="true"
+            [disabled]="true"></p-checkbox>
+              </td>
+              <!-- <td>
+                <div class="custom-control custom-checkbox">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    disabled
+                    [checked]="tenant.isActive"
+                  />
+                  <label class="custom-control-label"></label>
+                </div>
+              </td> -->
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-sm bg-secondary"
+                  (click)="editFiscalYear(FiscalYears)"
+                >
+                  <i class="fas fa-pencil-alt"></i>
+                  {{ "Edit" | localize }}
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm bg-danger mx-2"
+                  (click)="delete(FiscalYears)"
+                >
+                  <i class="fas fa-trash"></i>
+                  {{ "Delete" | localize }}
+                </button>
+              </td>
               </tr>
-            </tbody>
-          </table>
+          </ng-template>
+          <!-- <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td colspan="6">No customers found.</td>
+              </tr>
+          </ng-template> -->
+      </p-table>
+
         </div>
         <div class="card-footer bg-light border-top">
           <div class="row">

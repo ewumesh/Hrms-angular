@@ -21,6 +21,7 @@ import { AppUrlService } from '@shared/nav/app-url.service';
         ApiServiceProxies.ConfigurationServiceProxy,
         ApiServiceProxies.GenericListServiceProxy,
         ApiServiceProxies.ShiftServiceProxy,
+        ApiServiceProxies.FiscalYearServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

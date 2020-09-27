@@ -8,10 +8,11 @@ import {
 } from '@shared/paged-listing-component-base';
 import {
   EmployeeServiceProxy,
-  GetUpdateEmployeeDto
+  EmployeeDtosPagedResultDto,
+  EmployeeDtos
 } from '@shared/service-proxies/service-proxies';
-import { CreateEmployeeDialogComponent } from './create-employee/create-employee-dialog.component';
-import { EditEmployeeDialogComponent } from './edit-employee/edit-employee-dialog.component';
+// import { CreateEmployeeDialogComponent } from './create-employee/create-employee-dialog.component';
+// import { EditEmployeeDialogComponent } from './edit-employee/edit-employee-dialog.component';
 import * as moment from 'moment';
 
 class PagedEmployeeRequestDto extends PagedRequestDto {
@@ -23,8 +24,8 @@ class PagedEmployeeRequestDto extends PagedRequestDto {
   templateUrl: './Employees.component.html',
   animations: [appModuleAnimation()]
 })
-export class EmployeesComponent extends PagedListingComponentBase<GetUpdateEmployeeDto> {
-  employees: GetUpdateEmployeeDto[] = [];
+export class EmployeesComponent extends PagedListingComponentBase<EmployeeDtos> {
+  employees: EmployeeDtos[] = [];
   item : [];
   keyword = '';
   isActive: boolean | null;
@@ -47,14 +48,20 @@ export class EmployeesComponent extends PagedListingComponentBase<GetUpdateEmplo
     request.isActive = this.isActive;
 
     this._EmployeeService
-      .getAll()
+      .getAll(
+        request.keyword,
+        request.isActive,
+        request.skipCount,
+        request.maxResultCount
+      )
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: GetUpdateEmployeeDto[]) => {
-        this.employees = result;
+      .subscribe((result: EmployeeDtosPagedResultDto) => {
+        this.employees = result.items;
+          this.showPaging(result, pageNumber);
         // this.employees.forEach(element => {
         //  element['dob'] =  moment(element['dob'],'MM/DD/YYYY');
         // });
@@ -63,7 +70,7 @@ export class EmployeesComponent extends PagedListingComponentBase<GetUpdateEmplo
       });
   }
 
-  delete(Employee: GetUpdateEmployeeDto ): void {
+  delete(Employee: EmployeeDtos ): void {
     debugger
     abp.message.confirm(
       this.l('EmployeeDeleteWarningMessage',Employee.firstName + Employee.lastName),
@@ -84,45 +91,45 @@ export class EmployeesComponent extends PagedListingComponentBase<GetUpdateEmplo
     );
   }
 
-  createEmployee(): void {
-    this.showCreateOrEditEmployeeDialog();
-  }
+  // createEmployee(): void {
+  //   this.showCreateOrEditEmployeeDialog();
+  // }
 
-  editEmployee(Employee: GetUpdateEmployeeDto): void {
-    this.showCreateOrEditEmployeeDialog(Employee.id);
-  }
+//   editEmployee(Employee: GetUpdateEmployeeDto): void {
+//     this.showCreateOrEditEmployeeDialog(Employee.id);
+//   }
 
-  showCreateOrEditEmployeeDialog(id?: number): void {
-    let createOrEditemployeeDialog: BsModalRef;
-    if (!id) {
-      createOrEditemployeeDialog = this._modalService.show(
-        CreateEmployeeDialogComponent,
-        {
-          class: 'modal-lg',
-        }
-      );
-    } 
+//   showCreateOrEditEmployeeDialog(id?: number): void {
+//     let createOrEditemployeeDialog: BsModalRef;
+//     if (!id) {
+//       createOrEditemployeeDialog = this._modalService.show(
+//         CreateEmployeeDialogComponent,
+//         {
+//           class: 'modal-lg',
+//         }
+//       );
+//     } 
     
-    else {
-      createOrEditemployeeDialog = this._modalService.show(
-        EditEmployeeDialogComponent,
-        {
-          class: 'modal-lg',
-          initialState: {
-            id: id,
-          },
-        }
-      );
-    }
+//     else {
+//       createOrEditemployeeDialog = this._modalService.show(
+//         EditEmployeeDialogComponent,
+//         {
+//           class: 'modal-lg',
+//           initialState: {
+//             id: id,
+//           },
+//         }
+//       );
+//     }
 
-    createOrEditemployeeDialog.content.onSave.subscribe(() => {
-      this.refresh();
-    });
-  }
+//     createOrEditemployeeDialog.content.onSave.subscribe(() => {
+//       this.refresh();
+//     });
+//   }
 
-  clearFilters(): void {
-    this.keyword = '';
-    this.isActive = undefined;
-    this.getDataPage(1);
-  }
+//   clearFilters(): void {
+//     this.keyword = '';
+//     this.isActive = undefined;
+//     this.getDataPage(1);
+//   }
 }

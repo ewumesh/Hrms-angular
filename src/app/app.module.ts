@@ -46,8 +46,8 @@ import { CreateCompanyDialogComponent } from 'app/companies/create-company/creat
 import { EditCompanyDialogComponent } from 'app/companies/edit-company/edit-company-dialog.component';
 // Employee
 import { EmployeesComponent } from 'app/employees/Employees.component';
-import { CreateEmployeeDialogComponent } from 'app/employees/create-employee/create-employee-dialog.component';
-import { EditEmployeeDialogComponent } from '@app/employees/edit-employee/edit-employee-dialog.component';
+// import { CreateEmployeeDialogComponent } from 'app/employees/create-employee/create-employee-dialog.component';
+// import { EditEmployeeDialogComponent } from '@app/employees/edit-employee/edit-employee-dialog.component';
 import { EmployeeProfileComponent } from 'app/employees/employee-profile/profile.component';
 import { CreateWorkExperienceComponent } from '@app/employees/employee-profile/work-experience/create-work-experience-dialog.component';
 import { CreateEducationComponent } from '@app/employees/employee-profile/education/create-education-dialog.component';
@@ -69,6 +69,10 @@ import { EditBranchDialogComponent } from 'app/branches/edit-branch/edit-branch-
 import { ShiftsComponent } from 'app/shifts/Shifts.component';
 import { CreateShiftDialogComponent } from 'app/shifts/create-shift/create-shift-dialog.component';
 import { EditShiftDialogComponent } from 'app/shifts/edit-shift/edit-shift-dialog.component';
+//Shift
+import { FiscalYearsComponent } from 'app/fiscalyears/FiscalYearss.component';
+import { CreateFiscalYearDialogComponent } from 'app/fiscalyears/create-fiscalyear/create-fiscalyear-dialog.component';
+import { EditFiscalYearDialogComponent } from 'app/fiscalyears/edit-fiscalyear/edit-fiscalyear-dialog.component';
 // layout
 import { HeaderComponent } from './layout/header.component';
 import { HeaderLeftNavbarComponent } from './layout/header-left-navbar.component';
@@ -105,8 +109,8 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     EditCompanyDialogComponent,
     //Employee
     EmployeesComponent,
-    CreateEmployeeDialogComponent,
-    EditEmployeeDialogComponent,
+    // CreateEmployeeDialogComponent,
+    // EditEmployeeDialogComponent,
     EmployeeProfileComponent,
     CreateWorkExperienceComponent,
     CreateEducationComponent,
@@ -127,6 +131,10 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     ShiftsComponent,
     CreateShiftDialogComponent,
     EditShiftDialogComponent,
+    //FiscalYear
+    FiscalYearsComponent,
+    CreateFiscalYearDialogComponent,
+    EditFiscalYearDialogComponent,
     // layout
     HeaderComponent,
     HeaderLeftNavbarComponent,
@@ -180,8 +188,8 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     CreateCompanyDialogComponent,
     EditCompanyDialogComponent,
     //Employee
-    CreateEmployeeDialogComponent,
-    EditEmployeeDialogComponent,
+    // CreateEmployeeDialogComponent,
+    // EditEmployeeDialogComponent,
     CreateWorkExperienceComponent,
     CreateEducationComponent,
     CreateDepartmentComponent,
@@ -197,6 +205,9 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     //Shift
     CreateShiftDialogComponent,
     EditShiftDialogComponent,
+    //fiscalyear
+    CreateFiscalYearDialogComponent,
+    EditFiscalYearDialogComponent,
   ],
 })
 export class AppModule { }

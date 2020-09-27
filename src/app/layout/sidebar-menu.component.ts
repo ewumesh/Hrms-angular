@@ -152,6 +152,12 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
           'fas fa-theater-masks',
           'Pages.Shifts'
         ),
+        new MenuItem(
+          this.l('FiscalYears'),
+          '/app/fiscalyears',
+          'fas fa-theater-masks',
+          'Pages.FiscalYears'
+        ),
       ])
 
     ];

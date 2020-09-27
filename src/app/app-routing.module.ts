@@ -11,6 +11,7 @@ import{CompaniesComponent} from 'app/companies/Companies.component';
 import { EmployeesComponent } from 'app/employees/Employees.component';
 import { BranchesComponent } from 'app/branches/Branches.component';
 import {ShiftsComponent} from 'app/shifts/Shifts.component';
+import {FiscalYearsComponent} from 'app/fiscalyears/FiscalYearss.component';
 
 
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
@@ -34,6 +35,7 @@ import { EmployeeProfileComponent } from './employees/employee-profile/profile.c
                     { path: 'departments', component: DepartmentsComponent, data: { permission: 'Pages.Departments' }, canActivate: [AppRouteGuard] },
                     { path: 'shifts', component: ShiftsComponent, data: { permission: 'Pages.Shifts' }, canActivate: [AppRouteGuard] },
                     { path: 'designations', component: DesignationsComponent, data: { permission: 'Pages.Designations' }, canActivate: [AppRouteGuard] },
+                    { path: 'fiscalyears', component: FiscalYearsComponent, data: { permission: 'Pages.FiscalYears' }, canActivate: [AppRouteGuard] },
                     { path: 'branches', component: BranchesComponent, data: { permission: 'Pages.Branches' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
