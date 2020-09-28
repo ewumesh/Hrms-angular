@@ -200,8 +200,8 @@
           <ng-template pTemplate="body" let-FiscalYears>
               <tr>
                 <td> {{FiscalYears.name}} </td>
-                <td> {{FiscalYears.startDate}}</td>
-                <td>{{ FiscalYears.endDate }}</td>
+                <td> {{FiscalYears.startDate | date:"MM/dd/yyyy"}}</td>
+                <td>{{ FiscalYears.endDate | date:"MM/dd/yyyy"}}</td>
                 <td>
                   <p-checkbox [(ngModel)]="FiscalYears.isCurrent"
             name="isCurrent"
