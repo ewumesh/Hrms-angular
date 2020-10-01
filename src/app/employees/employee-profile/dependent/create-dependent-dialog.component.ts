@@ -1,36 +1,37 @@
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
-import { EducationDto } from '@shared/service-proxies/service-proxies';
+import { DepartmentDtos, DependentDto, EmployeeServiceProxy } from '@shared/service-proxies/service-proxies';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from '../../../../shared/app-component-base';
 
-@Component({
-    templateUrl: './create-education-dialog.component.html',
-})
-export class CreateEducationComponent extends AppComponentBase implements OnInit {
 
-    education: EducationDto = new EducationDto();
+@Component({
+    templateUrl: './create-dependent-dialog.component.html',
+})
+export class CreateDependentComponent extends AppComponentBase implements OnInit {
+    dependent: DependentDto = new DependentDto();
     saving: boolean;
     @Output() onSave = new EventEmitter<any>();
-
-    degrees: any[] = [
-        { label: 'Master', id: 1785 }
+    genders: any[] = [
+        { label: 'Male' },
+        { label: 'Female' }
     ]
 
     constructor(
         injector: Injector,
-        public bsModalRef: BsModalRef
+        public bsModalRef: BsModalRef,
+        private _employeeService: EmployeeServiceProxy
     ) {
         super(injector);
     }
 
     ngOnInit() {
-        this.education = this.education;
+        this.dependent = this.dependent;
     }
 
     save() {
         // this.employeeService
-        //     .update(this.education)
+        //     .update(this.dependent)
         //     .pipe(
         //         finalize(() => {
         //             this.saving = false;
@@ -39,7 +40,7 @@ export class CreateEducationComponent extends AppComponentBase implements OnInit
         //     .subscribe(() => {
                 this.notify.info(this.l('Changed Successfully'));
                 this.bsModalRef.hide();
-                this.onSave.emit(this.education);
+                this.onSave.emit(this.dependent);
             // });
     }
 

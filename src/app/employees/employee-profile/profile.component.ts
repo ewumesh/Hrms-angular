@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreateWorkExperienceComponent } from './work-experience/create-work-experience-dialog.component';
 import { CreateEducationComponent } from './education/create-education-dialog.component';
-import { CreateDepartmentComponent } from './department/create-department-dialog.component';
+import { CreateDependentComponent } from './dependent/create-dependent-dialog.component';
 
 @Component({
     templateUrl: './profile.component.html'
@@ -179,7 +179,7 @@ export class EmployeeProfileComponent implements OnInit {
         let createOrEditDepartmentDialog: BsModalRef;
         if (!id) {
             createOrEditDepartmentDialog = this._modalService.show(
-                CreateDepartmentComponent,
+                CreateDependentComponent,
                 {
                     class: 'modal-md',
                 }
@@ -188,7 +188,7 @@ export class EmployeeProfileComponent implements OnInit {
 
         else {
             createOrEditDepartmentDialog = this._modalService.show(
-                CreateDepartmentComponent,
+                CreateDependentComponent,
                 {
                     class: 'modal-md',
                     initialState: {

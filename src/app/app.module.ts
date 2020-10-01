@@ -24,7 +24,7 @@ import { SortableModule } from 'ngx-bootstrap/sortable';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TabViewModule } from 'primeng/tabview';
-import {PanelModule} from 'primeng/panel';
+import { PanelModule } from 'primeng/panel';
 
 // tenants
 import { TenantsComponent } from '@app/tenants/tenants.component';
@@ -51,8 +51,9 @@ import { EmployeesComponent } from 'app/employees/Employees.component';
 import { EmployeeProfileComponent } from 'app/employees/employee-profile/profile.component';
 import { CreateWorkExperienceComponent } from '@app/employees/employee-profile/work-experience/create-work-experience-dialog.component';
 import { CreateEducationComponent } from '@app/employees/employee-profile/education/create-education-dialog.component';
-import { CreateDepartmentComponent } from '@app/employees/employee-profile/department/create-department-dialog.component';
- 
+import { CreateDependentComponent } from '@app/employees/employee-profile/dependent/create-dependent-dialog.component';
+import { CreateEmployeeComponent } from '@app/employees/employee-profile/create-employee.component';
+
 //Department
 import { DepartmentsComponent } from 'app/departments/Departments.component';
 import { CreateDepartmentDialogComponent } from 'app/departments/create-department/create-department-dialog.component';
@@ -114,7 +115,8 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     EmployeeProfileComponent,
     CreateWorkExperienceComponent,
     CreateEducationComponent,
-    CreateDepartmentComponent,
+    CreateDependentComponent,
+    CreateEmployeeComponent,
     //Department
     DepartmentsComponent,
     CreateDepartmentDialogComponent,
@@ -192,7 +194,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     // EditEmployeeDialogComponent,
     CreateWorkExperienceComponent,
     CreateEducationComponent,
-    CreateDepartmentComponent,
+    CreateDependentComponent,
     //Department
     CreateDepartmentDialogComponent,
     EditDepartmentDialogComponent,

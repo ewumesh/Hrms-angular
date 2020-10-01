@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './users/change-password/change-password
 import { DepartmentsComponent } from './departments/Departments.component';
 import { DesignationsComponent } from './designations/Designations.component';
 import { EmployeeProfileComponent } from './employees/employee-profile/profile.component';
+import { CreateEmployeeComponent } from './employees/employee-profile/create-employee.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { EmployeeProfileComponent } from './employees/employee-profile/profile.c
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'employees', component: EmployeesComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
+                    { path: 'employees/create', component: CreateEmployeeComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
                     { path: 'employees/profile', component: EmployeeProfileComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
                     { path: 'companies', component: CompaniesComponent, data: { permission: 'Pages.Companies' }, canActivate: [AppRouteGuard] },
                     { path: 'departments', component: DepartmentsComponent, data: { permission: 'Pages.Departments' }, canActivate: [AppRouteGuard] },
