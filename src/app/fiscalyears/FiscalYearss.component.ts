@@ -108,7 +108,7 @@ export class FiscalYearsComponent extends PagedListingComponentBase<FiscalYearDt
       createOrEditcomapnyDialog = this._modalService.show(
         CreateFiscalYearDialogComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-md',
         }
       );
     } 
@@ -117,7 +117,7 @@ export class FiscalYearsComponent extends PagedListingComponentBase<FiscalYearDt
       createOrEditcomapnyDialog = this._modalService.show(
         EditFiscalYearDialogComponent,
         {
-          class: 'modal-lg',
+          class: 'modal-md',
           initialState: {
             id: id,
           },
