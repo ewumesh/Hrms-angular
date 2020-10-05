@@ -41,7 +41,7 @@
                                 <label for="employeeId" class="p-col-fixed" style="width:150px">Employee Id : </label>
                                 <div class="p-col">
                                     <input [(ngModel)]="employee.employeeIdNumber" name="employeeIdNumber"
-                                        style="width: 90%;" id="employeeId" type="text" placeholder="Enter Employee ID"
+                                        style="width: 90%;" id="employeeId" disabled="disabled" type="text" placeholder="Enter Employee ID"
                                         pInputText>
                                 </div>
                             </div>
@@ -93,19 +93,20 @@
                             <div class="p-field p-grid">
                                 <label for="reportingTo" class="p-col-fixed" style="width:150px">Reporting To : </label>
                                 <div class="p-col">
-                                    <input [(ngModel)]="employee.reportingTo" name="reportingTo" style="width: 90%;"
-                                        id="reportingTo" placeholder="Enter Reporting Person" type="text" pInputText>
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="UserDropD" id="reportingTo" 
+                                    name="reportingTo" placeholder="Select ReportTO"   [(ngModel)]="employee.reportingTo"
+                                    ></p-dropdown>
                                 </div>
                             </div>
                             <div class="p-field p-grid">
                                 <label for="sourceOfHire" class="p-col-fixed" style="width:150px">Source of hire :
                                 </label>
                                 <div class="p-col">
-                                    <!-- <p-dropdown [(ngModel)]="employee.sourceOfHire" name="sourceOfHire"
-                                        [style]="{'width':'90%'}" placeholder="Slect Source of Hire"
-                                        [options]="jobTitles"></p-dropdown> -->
-                                        <input [(ngModel)]="employee.sourceOfHire" name="sourceOfHire" style="width: 90%;"
-                                        id="sourceOfHire" placeholder="Enter Source of hire" type="text" pInputText>
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="SourceOfHireDropD"
+                                    id="sourceOfHire" placeholder="Select SourceOfHire"  name="sourceOfHire"[(ngModel)]="employee.sourceOfHire"
+                                    ></p-dropdown>
+                                        <!-- <input [(ngModel)]="employee.sourceOfHire" name="sourceOfHire" style="width: 90%;"
+                                        id="sourceOfHire" placeholder="Enter Source of hire" type="text" pInputText> -->
                                 </div>
                             </div>
                             <div class="p-field p-grid">
@@ -113,6 +114,19 @@
                                 <div class="p-col">
                                     <input [(ngModel)]="employee.workPhone" name="workPhone" style="width: 90%;"
                                         id="workPhone" type="text" placeholder="Enter Phone Number" pInputText>
+                                </div>
+                            </div>
+                            <div class="p-field p-grid">
+                                <label for="appUser" class="p-col-fixed" style="width:150px">User :
+                                </label>
+                                <div class="p-col">
+                                    <p-checkbox
+                                    style="width: 90%;" id="appUser" 
+                                    id="appUser" name="appUser" [(ngModel)]="employee.appUser"
+                                   label="{{employee.appUser}}"
+                                   [binary]="true"
+                                  >
+                                  </p-checkbox>
                                 </div>
                             </div>
                         </div>
@@ -128,18 +142,28 @@
                             <div class="p-field p-grid">
                                 <label for="dateOfHire" class="p-col-fixed" style="width:150px">Date of hire : </label>
                                 <div class="p-col">
+
+                                    <!-- <p-calendar [(ngModel)]="employee.dateOfHire" name="dateOfHire"
+                                    [style]="{'width':'90%'}" placeholder="Select Date">
+                                        <ng-template pTemplate="displayValue">
+                                            <span>{{employee.dateOfHire | date:'shortDate'}}</span>
+                                        </ng-template>
+                                      </p-calendar> -->
                                     <p-calendar [(ngModel)]="employee.dateOfHire" name="dateOfHire"
                                         [style]="{'width':'90%'}" placeholder="Select Date" inputId="dateOfHire">
                                     </p-calendar>
                                 </div>
                             </div>
                             <div class="p-field p-grid">
-                                <label for="employeeStatus" class="p-col-fixed" style="width:150px">Employee Status :
+                                <label for="employeeStatus" class="p-col-fixed" style="width:150px">Employee IsActive :
                                 </label>
                                 <div class="p-col">
-                                    <input [(ngModel)]="employee.employeeStatus" name="employeeStatus"
-                                        style="width: 90%;" id="employeeStatus" placeholder="Enter Employee Status"
-                                        type="text" pInputText>
+                                    <p-checkbox
+                                    style="width: 90%;" id="employeeStatus" 
+                                    id="employeeStatus" name="employeeStatus" [(ngModel)]="employee.employeeStatus"
+                                   [binary]="true"
+                                  >
+                                  </p-checkbox>
                                 </div>
                             </div>
                             <div class="p-field p-grid">
@@ -202,10 +226,11 @@
                             <div class="p-field p-grid">
                                 <label for="country" class="p-col-fixed" style="width:150px">Country : </label>
                                 <div class="p-col">
-                                    <!-- <p-dropdown [(ngModel)]="employee.country" name="country" [style]="{'width':'90%'}"
-                                        placeholder="Select Country" [options]="countries"></p-dropdown> -->
-                                        <input [(ngModel)]="employee.country" name="country" style="width: 90%;" id="country"
-                                        placeholder="Enter Country" type="text" pInputText>
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="CountryDropD" id="country" 
+                                    name="country"  placeholder="Select Country" [(ngModel)]="employee.country"     
+                                    ></p-dropdown>
+                                        <!-- <input [(ngModel)]="employee.country" name="country" style="width: 90%;" id="country"
+                                        placeholder="Enter Country" type="text" pInputText> -->
                                 </div>
                             </div>
                             <div class="p-field p-grid">
@@ -218,21 +243,24 @@
                             <div class="p-field p-grid">
                                 <label for="gender" class="p-col-fixed" style="width:150px">Gender : </label>
                                 <div class="p-col">
-                                    <!-- <p-dropdown [(ngModel)]="employee.gender" name="gender" [style]="{'width':'90%'}"
-                                        placeholder="Select gender" [options]="gender"></p-dropdown> -->
-                                        <input [(ngModel)]="employee.gender" name="gender" style="width: 90%;" id="gender"
-                                        placeholder="Enter Gender" type="text" pInputText>
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="GenderDropD"
+                                    id="gender" 
+                                    name="gender"  placeholder="Select Gender"  [(ngModel)]="employee.gender"     
+                                    ></p-dropdown>
+                                        <!-- <input [(ngModel)]="employee.gender" name="gender" style="width: 90%;" id="gender"
+                                        placeholder="Enter Gender" type="text" pInputText> -->
                                 </div>
                             </div>
                             <div class="p-field p-grid">
                                 <label for="maritalStatus" class="p-col-fixed" style="width:150px">Marital Status :
                                 </label>
                                 <div class="p-col">
-                                    <!-- <p-dropdown [(ngModel)]="employee.maritalStatus" name="maritalStatus"
-                                        [style]="{'width':'90%'}" placeholder="Select Marital Status"
-                                        [options]="maritalStatus"></p-dropdown> -->
-                                        <input [(ngModel)]="employee.maritalStatus" name="phone" style="width: 90%;" id="maritalStatus"
-                                        placeholder="Enter Marital status" type="text" pInputText>
+                                    <p-dropdown [style]="{'width':'90%'}" [options]="MaratialStatusDropD"
+                                    id="maritalStatus" 
+                                    name="maritalStatus" placeholder="Select MaritalStatus" [(ngModel)]="employee.maritalStatus"     
+                                    ></p-dropdown>
+                                        <!-- <input [(ngModel)]="employee.maritalStatus" name="phone" style="width: 90%;" id="maritalStatus"
+                                        placeholder="Enter Marital status" type="text" pInputText> -->
                                 </div>
                             </div>
                         </div>

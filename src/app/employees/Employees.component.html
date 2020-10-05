@@ -6,10 +6,10 @@
           <h1>{{ "Employee" | localize }}</h1>
         </div>
         <div class="col-6 text-right">
-          <!-- <a href="javascript:;" class="btn bg-blue" (click)="createEmployee()">
+          <a href="javascript:;" class="btn bg-blue" (click)="createEmployee()">
             <i class="fa fa-plus-square"></i>
             {{ "Create" | localize }}
-          </a> -->
+          </a>
         </div>
       </div>
     </div>
@@ -141,7 +141,7 @@
                 <th>{{ "maritalStatus" | localize }}</th>
                 <th>{{ "email" | localize }}</th>
                 <th>{{ "phone" | localize }}</th>
-                <th>{{ "permanentAddress" | localize }}</th>
+                <!-- <th>{{ "permanentAddress" | localize }}</th>
                 <th>{{ "temporaryAddress" | localize }}</th>
                 <th>{{ "employeeIdNumber" | localize }}</th>
                 <th>{{ "designation" | localize }}</th>
@@ -155,7 +155,7 @@
                 <th>{{ "accountHolderName" | localize }}</th>
                 <th>{{ "bankName" | localize }}</th>
                 <th>{{ "accountNumber" | localize }}</th>
-                <th>{{ "swiftCode" | localize }}</th>
+                <th>{{ "swiftCode" | localize }}</th> -->
                 <th style="width: 200px;">{{ "Actions" | localize }}</th>
               </tr>
             </thead>
@@ -180,7 +180,7 @@
                 <td>{{ employees.maritalStatus }}</td>
                 <td>{{ employees.email }}</td>
                 <td>{{ employees.phone }}</td>
-                <td>{{ employees.permanentAddress }}</td>
+                <!-- <td>{{ employees.permanentAddress }}</td>
                 <td>{{ employees.temporaryAddress }}</td>
                 <td>{{ employees.employeeIdNumber }}</td>
                 <td>{{ employees.designation }}</td>
@@ -194,7 +194,7 @@
                 <td>{{ employees.accountHolderName }}</td>
                 <td>{{ employees.bankName }}</td>
                 <td>{{ employees.accountNumber }}</td>
-                <td>{{ employees.swiftCode }}</td>
+                <td>{{ employees.swiftCode }}</td> -->
                 <!-- <td>
                   <div class="custom-control custom-checkbox">
                     <input
@@ -214,6 +214,15 @@
                   >
                     <i class="fas fa-pencil-alt"></i>
                     {{ "Edit" | localize }}
+                  </button>
+
+                   <button
+                    type="button"
+                    class="btn btn-sm bg-success mx-2"
+                    (click)="DetailEmployee(employees)"
+                  >
+                    <i class="fas fa-info"></i>
+                    {{ "Detail" | localize }}
                   </button>
                   <button
                     type="button"

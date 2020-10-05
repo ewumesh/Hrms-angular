@@ -11,9 +11,13 @@ import {
   EmployeeDtosPagedResultDto,
   EmployeeDtos
 } from '@shared/service-proxies/service-proxies';
+import{EmployeeProfileComponent} from '../employees/employee-profile/profile.component';
 // import { CreateEmployeeDialogComponent } from './create-employee/create-employee-dialog.component';
 // import { EditEmployeeDialogComponent } from './edit-employee/edit-employee-dialog.component';
 import * as moment from 'moment';
+import { from } from 'rxjs';
+import { initial } from 'lodash';
+import { Router } from '@angular/router'
 
 class PagedEmployeeRequestDto extends PagedRequestDto {
   keyword: string;
@@ -34,7 +38,10 @@ export class EmployeesComponent extends PagedListingComponentBase<EmployeeDtos> 
   constructor(
     injector: Injector,
     private _EmployeeService: EmployeeServiceProxy,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    // private _EmployeeProfile:EmployeeProfileComponent
+    private router: Router
+
   ) {
     super(injector);
   }
@@ -91,14 +98,27 @@ export class EmployeesComponent extends PagedListingComponentBase<EmployeeDtos> 
     );
   }
 
-  // createEmployee(): void {
-  //   this.showCreateOrEditEmployeeDialog();
-  // }
+  createEmployee(): void {
+    this.router.navigate(['/app/employees/create']);
+  }
 
-//   editEmployee(Employee: GetUpdateEmployeeDto): void {
-//     this.showCreateOrEditEmployeeDialog(Employee.id);
-//   }
+  editEmployee(Employee: EmployeeDtos): void {
 
+      if(Employee.id) {
+        debugger
+        this.router.navigate(['/app/employees/profile',{ id : Employee.id}]);
+
+      }
+  }
+  DetailEmployee(Employee: EmployeeDtos): void 
+  {
+
+    if(Employee.id) {
+      debugger
+      this.router.navigate(['/app/employees/profiledetail',{ id : Employee.id}]);
+
+    }
+  }
 //   showCreateOrEditEmployeeDialog(id?: number): void {
 //     let createOrEditemployeeDialog: BsModalRef;
 //     if (!id) {

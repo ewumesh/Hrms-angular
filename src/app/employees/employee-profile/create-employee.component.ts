@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { CreateEmployeeDto, DropDownDto, EmployeeServiceProxy, GetUpdateGenericListDto } from '@shared/service-proxies/service-proxies';
+import { CreateEmployeeDto, DropDownDto, EmployeeServiceProxy, GetUpdateGenericListDto, UserDto,CounterDto } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreateWorkExperienceComponent } from './work-experience/create-work-experience-dialog.component';
 import { CreateEducationComponent } from './education/create-education-dialog.component';
@@ -26,10 +26,33 @@ export class CreateEmployeeComponent extends AppComponentBase implements OnInit 
     ];
 
 
+
     // Dropdowns
     jobTitles: SelectItem[] = [];
     departments: SelectItem[] = [];
+    UserDropD : SelectItem[] = [];
     maritalStatus: any[] = [{id: 1212, name: 'Married', value: 'Married'}, {id: 586, name: 'Unmarried', value: 'Unmarried'}];
+    SourceOfHireDropD: any[] = [
+        { label: 'TV', value: 'TV'},
+        { label: 'Friends', value: 'Friends' },
+        { label: 'News', value:  'News' },
+        { label: 'College', value: 'College' },
+    ]
+    CountryDropD: any[] = [
+        { label: 'Nepal', value: 'Nepal'},
+        { label: 'India', value: 'India' },
+        { label: 'USA', value:  'USA' },
+        { label: 'China', value: 'China' },
+    ]
+    GenderDropD: any[] = [
+        { label: 'Male', value: 'Male'},
+        { label: 'Female', value: 'Female' },
+        { label: 'Other', value:  'Other' },
+    ]
+    MaratialStatusDropD: any[] = [
+        { label: 'Unmarried', value: 'Unmarried'},
+        { label: 'Married', value: 'Married' },
+    ]
 
     employee: CreateEmployeeDto = new CreateEmployeeDto();
 
@@ -43,6 +66,8 @@ export class CreateEmployeeComponent extends AppComponentBase implements OnInit 
     ngOnInit() {
         this.getDesignation();
         this.getDepartment();
+        this.getReporttoUserDropdown();
+        this.getEmployeeIdentification();
     }
 
     getDesignation() {
@@ -61,8 +86,21 @@ export class CreateEmployeeComponent extends AppComponentBase implements OnInit 
             console.log(this.departments);
         })
     }
-
-
+    getEmployeeIdentification()
+    {
+        this.employeeService.getcounter().subscribe((result: CounterDto) => {
+            this.employee.employeeIdNumber = result.employeeIdNo;
+        })
+    }
+    getReporttoUserDropdown()
+    {
+        this.employeeService.gettoreportuser()
+        .subscribe((result: UserDto[]) => {
+         result.forEach(element => {
+           this.UserDropD.push({label:element['fullName'],value:element['id']})
+         });
+        })          
+    }
     // For Work experiences
     createWorkExperience() {
         this.showCreateOrEditWorkExperienceDialog();
@@ -97,7 +135,7 @@ export class CreateEmployeeComponent extends AppComponentBase implements OnInit 
             );
         }
 
-        createOrEditWorkExperienceDialog.content.onSave.subscribe((a) => {
+        createOrEditWorkExperienceDialog.content.onSave.subscribe((a: { id: number; sn: number; }) => {
             //   this.refresh();
             if (value === a) {
             } else {

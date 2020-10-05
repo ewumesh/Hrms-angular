@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { DepartmentDtos, DependentDto, EmployeeServiceProxy } from '@shared/service-proxies/service-proxies';
+import * as moment from 'moment';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from '../../../../shared/app-component-base';
@@ -27,6 +28,10 @@ export class CreateDependentComponent extends AppComponentBase implements OnInit
 
     ngOnInit() {
         this.dependent = this.dependent;
+        if(this.dependent.dob != null)
+        {
+            this.dependent.dob = moment(this.dependent.dob).format('MM/DD/YYYY')
+        }
     }
 
     save() {

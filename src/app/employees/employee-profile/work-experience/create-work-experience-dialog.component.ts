@@ -3,6 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AppComponentBase } from '@shared/app-component-base';
 import { EmployeeServiceProxy, WorkExperienceDto } from '@shared/service-proxies/service-proxies';
 import { finalize } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Component({
     templateUrl: './create-work-experience-dialog.component.html',
@@ -25,16 +26,24 @@ export class CreateWorkExperienceComponent extends AppComponentBase  implements 
     }
 
     ngOnInit() { 
-        this.getDesignation();
+        debugger;
+        if(this.work.startDate != null)
+        {
+        this.work.startDate =moment(this.work.startDate).format('MM/DD/YYYY');
+        }
+        if(this.work.endDate != null)
+        {
+            this.work.endDate =moment(this.work.endDate).format('MM/DD/YYYY');
+        }
     }
 
-    getDesignation() {
-        this.employeeService.getDesignation().subscribe((d: any[]) => {
-            d.forEach(element => {
-                this.jobTitles.push({ label: element['name'], value: element['id'] })
-            });
-        });
-    }
+    // getDesignation() {
+    //     this.employeeService.getDesignation().subscribe((d: any[]) => {
+    //         d.forEach(element => {
+    //             this.jobTitles.push({ label: element['name'], value: element['id'] })
+    //         });
+    //     });
+    // }
 
     save() {
         // this.employeeService

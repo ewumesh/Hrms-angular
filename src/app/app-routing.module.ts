@@ -19,6 +19,8 @@ import { DepartmentsComponent } from './departments/Departments.component';
 import { DesignationsComponent } from './designations/Designations.component';
 import { EmployeeProfileComponent } from './employees/employee-profile/profile.component';
 import { CreateEmployeeComponent } from './employees/employee-profile/create-employee.component';
+import { EmployeeProfileDetailComponent } from './employees/employee-profile/employee-profile-detail/profiledetail.component';
+
 
 @NgModule({
     imports: [
@@ -33,6 +35,7 @@ import { CreateEmployeeComponent } from './employees/employee-profile/create-emp
                     { path: 'employees', component: EmployeesComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
                     { path: 'employees/create', component: CreateEmployeeComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
                     { path: 'employees/profile', component: EmployeeProfileComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
+                    { path: 'employees/profiledetail', component: EmployeeProfileDetailComponent, data: { permission: 'Pages.Employees' }, canActivate: [AppRouteGuard] },
                     { path: 'companies', component: CompaniesComponent, data: { permission: 'Pages.Companies' }, canActivate: [AppRouteGuard] },
                     { path: 'departments', component: DepartmentsComponent, data: { permission: 'Pages.Departments' }, canActivate: [AppRouteGuard] },
                     { path: 'shifts', component: ShiftsComponent, data: { permission: 'Pages.Shifts' }, canActivate: [AppRouteGuard] },

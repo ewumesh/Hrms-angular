@@ -12,6 +12,7 @@ import {
   ShiftServiceProxy,
   ShiftDtos
 } from '@shared/service-proxies/service-proxies';
+import * as moment from 'moment';
 
 @Component({
   templateUrl: './edit-Shift-dialog.component.html',
@@ -36,6 +37,11 @@ export class EditShiftDialogComponent extends AppComponentBase
   ngOnInit(): void {
     this._ShiftService.get(this.id).subscribe((result: ShiftDtos) => {
       this.Shift = result;
+      var Starttime = moment(result.startTime).format('HH:mm');
+      var Endtime = moment(result.endTime).format('HH:mm');
+      this.Shift.startTime = Starttime;
+      this.Shift.endTime = Endtime;
+      
     });
   }
 

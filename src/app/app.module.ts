@@ -46,6 +46,7 @@ import { CreateCompanyDialogComponent } from 'app/companies/create-company/creat
 import { EditCompanyDialogComponent } from 'app/companies/edit-company/edit-company-dialog.component';
 // Employee
 import { EmployeesComponent } from 'app/employees/Employees.component';
+import {EmployeeProfileDetailComponent } from 'app/employees/employee-profile/employee-profile-detail/profiledetail.component';
 // import { CreateEmployeeDialogComponent } from 'app/employees/create-employee/create-employee-dialog.component';
 // import { EditEmployeeDialogComponent } from '@app/employees/edit-employee/edit-employee-dialog.component';
 import { EmployeeProfileComponent } from 'app/employees/employee-profile/profile.component';
@@ -110,6 +111,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     EditCompanyDialogComponent,
     //Employee
     EmployeesComponent,
+    EmployeeProfileDetailComponent,
     // CreateEmployeeDialogComponent,
     // EditEmployeeDialogComponent,
     EmployeeProfileComponent,

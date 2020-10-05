@@ -11,7 +11,9 @@
                 </div>
                 <div class="p-field p-col-6 ">
                     <label for="jobTitle">Job Title</label>
-                    <p-dropdown [(ngModel)]="work.jobTitle" placeholder="Select Job Title" name="jobTitle" [options]="jobTitles"></p-dropdown>
+                    <input [(ngModel)]="work.jobTitle" type="text" class="form-control p-inputtext-sm" name="jobTitle" id="jobTitle"
+                    placeholder="Enter Previous Company Name" pInputText />
+                    <!-- <input [(ngModel)]="work.jobTitle" placeholder="Select Job Title" name="jobTitle" [options]="jobTitles"></p-dropdown> -->
                 </div>
             </div>
             <div class="row p-col-12">
